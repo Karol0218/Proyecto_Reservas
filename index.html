@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas de Restaurante</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- =========================================================
+         PANTALLA DE INICIO DE SESIÓN
+         ========================================================= -->
+    <div id="pantalla-login" class="pantalla-login">
+        <div class="tarjeta-login">
+            <h1 class="titulo-login">Sistema de Reservas de Restaurante</h1>
+            <p class="subtitulo-login">Ingresa con tu usuario y contraseña</p>
+
+            <form id="formulario-login" novalidate>
+                <div class="campo">
+                    <label for="campo-usuario">Usuario</label>
+                    <input type="text" id="campo-usuario" name="usuario" autocomplete="username"
+                           placeholder="Ejemplo: admin" maxlength="50">
+                </div>
+
+                <div class="campo">
+                    <label for="campo-contrasena">Contraseña</label>
+                    <input type="password" id="campo-contrasena" name="contrasena"
+                           autocomplete="current-password" placeholder="Tu contraseña" maxlength="50">
+                </div>
+
+                <p id="mensaje-login" class="mensaje-error" role="alert"></p>
+
+                <button type="submit" class="boton boton-principal boton-ancho">Iniciar sesión</button>
+            </form>
+
+            <div class="separador"><span>o</span></div>
+
+            <div id="contenedor-google" class="contenedor-google"></div>
+            <p id="mensaje-google" class="mensaje-error" role="alert"></p>
+
+            <div class="caja-demostracion">
+                <p class="titulo-demo">Usuarios de demostración</p>
+                <ul class="lista-demo">
+                    <li><strong>admin</strong> / admin123 — Administrador</li>
+                    <li><strong>mesero</strong> / mesero123 — Mesero</li>
+                    <li><strong>cocina</strong> / cocina123 — Cocina</li>
+                    <li><strong>despacho</strong> / despacho123 — Despacho</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         APLICACIÓN PRINCIPAL
+         ========================================================= -->
+    <div id="aplicacion" class="aplicacion oculto">
+
+        <header class="encabezado">
+            <button id="boton-menu" class="boton-icono" aria-label="Abrir menú de navegación">&#9776;</button>
+            <h2 id="titulo-vista" class="titulo-vista">Panel principal</h2>
+            <div class="usuario-conectado">
+                <span id="nombre-usuario" class="nombre-usuario"></span>
+                <span id="rol-usuario" class="etiqueta etiqueta-azul"></span>
+                <button id="boton-cerrar-sesion" class="boton boton-secundario">Cerrar sesión</button>
+            </div>
+        </header>
+
+        <nav id="menu-lateral" class="menu-lateral" aria-label="Menú principal">
+            <p class="titulo-menu">Menú</p>
+            <ul id="lista-menu" class="lista-menu"></ul>
+        </nav>
+
+        <div id="fondo-menu" class="fondo-menu oculto"></div>
+
+        <main id="contenido" class="contenido"></main>
+    </div>
+
+    <!-- =========================================================
+         VENTANA MODAL
+         ========================================================= -->
+    <div id="modal" class="modal oculto">
+        <div class="modal-contenido">
+            <div class="modal-encabezado">
+                <h3 id="modal-titulo">Título</h3>
+                <button id="modal-cerrar" class="boton-icono" aria-label="Cerrar ventana">&#10005;</button>
+            </div>
+            <div id="modal-cuerpo" class="modal-cuerpo"></div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         MENSAJES FLOTANTES
+         ========================================================= -->
+    <div id="contenedor-mensajes" class="contenedor-mensajes" aria-live="polite"></div>
+
+    <!-- Los archivos se cargan en orden: primero la capa de cifrado,
+         después los datos, luego la sesión, después los módulos
+         y al final la aplicación. -->
+    <script src="js/crypto.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/modules.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
